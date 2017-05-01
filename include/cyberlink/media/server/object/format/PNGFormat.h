@@ -1,0 +1,55 @@
+/******************************************************************
+*
+*	MediaServer for CyberLink
+*
+*	Copyright (C) Satoshi Konno 2003
+*
+*	File : PNGFormat.h
+*
+*	Revision:
+*
+*	04/18/04
+*		- first revision.
+*
+******************************************************************/
+
+#ifndef _CLINK_MEDIA_PNGFORMT_H_
+#define _CLINK_MEDIA_PNGFORMT_H_
+
+#include <media/server/object/format/ImageFormat.h>
+
+namespace CyberLink {
+
+class PNGFormat : public ImageFormat
+{
+	////////////////////////////////////////////////
+	// Constroctor
+	////////////////////////////////////////////////
+
+public:
+
+	PNGFormat();
+	PNGFormat(File *file);
+
+	////////////////////////////////////////////////
+	// Abstract Methods
+	////////////////////////////////////////////////
+	
+public:
+
+	bool equals(File *file);
+	
+	FormatObject *createObject(File *file)
+	{
+		return new PNGFormat(file);
+	}
+	
+	const char *getMimeType()
+	{
+		return "image/png";
+	}
+};
+
+}
+
+#endif

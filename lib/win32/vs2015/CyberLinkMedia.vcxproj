@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F8AB745B-DACA-4A75-AD90-235760B2E847}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../../../lib/</OutDir>
+    <IntDir>.\Release\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../../lib/</OutDir>
+    <IntDir>.\Debug\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../../pthreads/include;../../../include/cyberlink;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_LIB;USE_XMLPARSER_EXPAT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeaderOutputFile>.\Release/CyberLinkMedia.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0411</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>.\Release\CyberLinkMedia.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/CyberLinkMedia.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../../pthreads/include;../../../include/cyberlink;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_LIB;USE_XMLPARSER_EXPAT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeaderOutputFile>.\Debug/CyberLinkMedia.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0411</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>.\Debug\CyberLinkMedia.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug/CyberLinkMedia.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\cyberlink\media\player\MediaPlayer.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\action\BrowseAction.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\action\SearchAction.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\ConnectionInfo.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\ConnectionInfoList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\ConnectionManager.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\ContentDirectory.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\DirectoryList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\file\FileDirectory.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\gateway\GatewayDirectory.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\itunes\iTunesDirectory.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\itunes\iTunesLibrary.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\itunes\iTunesNode.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\itunes\iTunesPlaylist.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\itunes\iTunesPlaylistItemList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\itunes\iTunesPlaylistList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\itunes\iTunesTrack.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\itunes\iTunesTrackList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\mythtv\MythDatabase.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\mythtv\MythDirectory.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\mythtv\MythRecordedInfo.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\directory\mythtv\MythRecordedInfoList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\MediaServer.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\container\ContainerNode.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\ContentNode.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\ContentNodeList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\ContentPropertyList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\DIDLLite.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\FormatList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\format\DefaultFormat.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\format\GIFFormat.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\format\ID3Format.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\format\ID3Frame.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\format\ID3FrameList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\format\JPEGFormat.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\format\MPEGFormat.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\format\PNGFormat.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\file\FileItemNode.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\file\FileItemNodeList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\gateway\GatewayItemNode.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\gateway\GatewayItemNodeList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\ItemNode.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\ItemNodeList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\itunes\iTunesItemNode.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\itunes\iTunesItemNodeList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\mythtv\MythRecordedItemNode.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\item\mythtv\MythRecordedItemNodeList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\SearchCapList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\SearchCriteria.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\SearchCriteriaList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\search\IdSearchCap.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\search\TitleSearchCap.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\SortCapList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\SortCriteriaList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\sort\DCDateSortCap.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\sort\DCTitleSortCap.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\media\server\object\sort\UPnPClassSortCap.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\cyberlink\device\USN.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\player\action\BrowseResult.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\player\action\BrowseResultNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\player\MediaPlayer.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\action\BrowseAction.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\action\SearchAction.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\ConnectionInfo.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\ConnectionInfoList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\ConnectionManager.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\ContentDirectory.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\Directory.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\DirectoryList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\file\FileDirectory.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\gateway\GatewayDirectory.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\itunes\iTunesDirectory.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\itunes\iTunesLibrary.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\itunes\iTunesNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\itunes\iTunesPlaylist.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\itunes\iTunesPlaylistItem.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\itunes\iTunesPlaylistItemList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\itunes\iTunesPlaylistList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\itunes\iTunesTrack.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\itunes\iTunesTrackList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\mythtv\MythDatabase.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\mythtv\MythDirectory.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\mythtv\MythRecordedInfo.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\directory\mythtv\MythRecordedInfoList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\MediaServer.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\container\ContainerNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\container\RootNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\ContentNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\ContentNodeList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\ContentProperty.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\ContentPropertyList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\DIDLLite.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\DIDLLiteNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\Format.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\FormatList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\FormatObject.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\format\DefaultFormat.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\format\GIFFormat.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\format\ID3Format.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\format\ID3Frame.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\format\ID3FrameList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\format\ImageFormat.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\format\JPEGFormat.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\format\MPEGFormat.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\format\PNGFormat.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\file\FileItemNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\file\FileItemNodeList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\gateway\GatewayItemNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\gateway\GatewayItemNodeList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\ItemNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\ItemNodeList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\itunes\iTunesItemNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\itunes\iTunesItemNodeList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\mythtv\MythRecordedItemNode.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\item\mythtv\MythRecordedItemNodeList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\SearchCap.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\SearchCapList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\SearchCriteria.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\SearchCriteriaList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\search\IdSearchCap.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\search\TitleSearchCap.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\SortCap.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\SortCapList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\SortCriteriaList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\sort\DCDateSortCap.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\sort\DCTitleSortCap.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\object\sort\UPnPClassSortCap.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\media\server\UPnP.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

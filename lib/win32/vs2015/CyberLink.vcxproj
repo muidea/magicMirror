@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{CAAA75D9-77E0-46CB-B5A8-666A65EAC8E0}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>../../../lib/</OutDir>
+    <IntDir>.\Release\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>../../../lib/</OutDir>
+    <IntDir>.\Debug\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>../../../pthreads/include;../../../include/cyberlink;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WIN32;_LIB;USE_XMLPARSER_EXPAT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeaderOutputFile>.\Release/CyberLink.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Release/</AssemblerListingLocation>
+      <ObjectFileName>.\Release/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Release/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0411</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>CyberLink.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Release/CyberLink.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>../../../pthreads/include;../../../include/cyberlink;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_LIB;USE_XMLPARSER_EXPAT;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeaderOutputFile>.\Debug/CyberLink.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\Debug/</AssemblerListingLocation>
+      <ObjectFileName>.\Debug/</ObjectFileName>
+      <ProgramDataBaseFileName>.\Debug/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0411</Culture>
+    </ResourceCompile>
+    <Lib>
+      <OutputFile>../../../lib/CyberLink.lib</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\Debug/CyberLink.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTP.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPDate.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPHeader.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPPacket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPRequest.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPResponse.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPServer.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPServerList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPWorkerThread.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPSocket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPStatus.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\io\BufferedReader.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\io\File.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\io\FileInputStream.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\io\StringBufferInputStream.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\io\StringReader.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\DatagramSocket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\HostInterface.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\MulticastSocket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\ServerSocket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\Socket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\SocketCore.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\SocketInputStream.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\SocketUtil.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\URI.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\net\URL.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\soap\SOAP.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\soap\SOAPRequest.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\soap\SOAPResponse.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\sql\UniDatabase.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\sql\UniMySQL.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\Action.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ActionList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\AllowedValue.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\AllowedValueList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\AllowedValueRange.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\Argument.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ArgumentList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ControlPoint.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\control\ActionRequest.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\control\ActionResponse.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\control\ControlRequest.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\control\ControlResponse.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\control\QueryRequest.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\control\QueryResponse.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\control\RenewSubscriber.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\Device.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\DeviceList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\device\Advertiser.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\device\Disposer.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\device\MAN.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\device\NT.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\device\NTS.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\device\ST.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\device\USN.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\event\NotifyRequest.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\event\PropertyList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\event\Subscriber.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\event\Subscription.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\event\SubscriptionRequest.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\Icon.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\IconList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\Service.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ServiceList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ServiceStateTable.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\HTTPMUSocket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\HTTPUSocket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\SSDP.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\SSDPNotifySocket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\SSDPNotifySocketList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\SSDPPacket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\SSDPResponse.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\SSDPSearchResponseSocket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\SSDPSearchResponseSocketList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\SSDPSearchSocket.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\ssdp\SSDPSearchSocketList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\StateVariable.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\UPnP.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\UPnPStatus.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\ActionData.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\DeviceData.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\expat\xmlparse.c" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\expat\xmlrole.c" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\expat\xmltok.c" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\expat\xmltok_impl.c" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\expat\xmltok_ns.c" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\ServiceData.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\StateVariableData.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\Date.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\Debug.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\Mutex.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\StringTokenizer.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\StringUtil.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\Thread.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\TimeUtil.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\AttributeList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\expat\ExpatParser.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\Node.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\NodeList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\Parser.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\xerces\XercesParser.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\xml\XML.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTML.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTP.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPDate.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPHeader.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPPacket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPRequestListener.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPResponse.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPServer.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPServerList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPServerThread.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPSocket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPStatus.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\Parameter.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\ParameterList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\BufferedReader.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\File.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\FileInputStream.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\FileList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\InputStream.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\InputStreamReader.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\LineNumberReader.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\Reader.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\StringBufferInputStream.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\io\StringReader.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\DatagramPacket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\DatagramSocket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\HostInterface.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\InetSocketAddress.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\MulticastSocket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\NetworkInterface.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\NetworkInterfaceList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\ServerSocket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\Socket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\SocketImp.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\SocketInputStream.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\SocketUtil.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\URI.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\net\URL.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\soap\SOAP.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\soap\SOAPRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\soap\SOAPResponse.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\sql\UniDatabase.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\sql\UniMySQL.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\Action.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ActionList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\AllowedValue.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\AllowedValueList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\AllowedValueRange.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\Argument.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ArgumentList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ControlPoint.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\ActionListener.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\ActionRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\ActionResponse.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\Control.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\ControlRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\ControlResponse.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\QueryListener.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\QueryRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\QueryResponse.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\control\RenewSubscriber.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\CyberLink.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\Device.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\DeviceList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\Advertiser.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\Description.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\DeviceChangeListener.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\Disposer.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\InvalidDescriptionException.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\MAN.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\NotifyListener.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\NT.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\NTS.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\SearchListener.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\SearchResponseListener.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\ST.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\device\USN.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\event\EventListener.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\event\NotifyRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\event\Property.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\event\PropertyList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\event\Subscriber.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\event\SubscriberList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\event\Subscription.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\event\SubscriptionRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\event\SubscriptionResponse.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\Icon.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\IconList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\Service.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ServiceList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ServiceStateTable.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\HTTPMUSocket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\HTTPUSocket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDP.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPNotifyRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPNotifySocket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPNotifySocketList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPPacket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPResponse.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPSearchRequest.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPSearchResponse.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPSearchResponseSocket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPSearchResponseSocketList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPSearchSocket.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\ssdp\SSDPSearchSocketList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\StateVariable.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\UPnP.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\UPnPStatus.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\ActionData.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\ArgumentData.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\DeviceData.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\ServiceData.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\StateVariableData.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Date.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Debug.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Exception.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\ListenerList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Mutex.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\StringTokenizer.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\StringUtil.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Thread.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\TimeUtil.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Vector.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\Attribute.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\AttributeList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\Node.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\NodeData.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\NodeList.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\Parser.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\ParserException.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\xml\XML.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\amigaconfig.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\ascii.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\asciitab.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\expat.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\expat_external.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\iasciitab.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\internal.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\latin1tab.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\macconfig.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\nametab.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\utf8tab.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\watcomconfig.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\winconfig.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\xmlrole.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\xmltok.h" />
+    <ClInclude Include="..\..\..\src\cyberlink\xml\expat\xmltok_impl.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

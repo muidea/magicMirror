@@ -1,0 +1,23 @@
+/******************************************************************
+ *
+ * CyberLink for C++
+ *
+ * Copyright (C) Satoshi Konno 2002
+ *
+ * This is licensed under BSD-style license, see file COPYING.
+ *
+ ******************************************************************/
+
+#include <http/HTTP.h>
+#include <UPnPStatus.h>
+  
+const char *CyberLink::UPnP::StatusCodeToString(int code) {
+  switch (code) {
+  case UPnP::INVALID_ACTION: return "Invalid Action";
+  case UPnP::INVALID_ARGS: return "Invalid Args";
+  case UPnP::OUT_OF_SYNC: return "Out of Sync";
+  case UPnP::INVALID_VAR: return "Invalid Var";
+  case UPnP::ACTION_FAILED: return "Action Failed";
+  }
+   return "";
+}

@@ -3,3 +3,5 @@
 ################################################################################
 
 /lib/win32/vs2015/.vs/MagicMirror/v14
+/lib/win32/vs2015/MagicMirror.VC.VC.opendb
+/lib/win32/vs2015/MagicMirror.VC.db
