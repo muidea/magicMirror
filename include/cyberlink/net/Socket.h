@@ -35,20 +35,7 @@ class Socket : public SocketCore {
   ssize_t send(const std::string &cmd);
   ssize_t send(const char c);
 
-  ssize_t recv(char *buffer, size_t bufferLen);
-
-private:
-  
-#if defined(ITRON)
-  static const int WINDOW_BUF_SIZE;
-  UH *sendWinBuf;
-  UH *recvWinBuf;
-#endif
-
-#if defined(ITRON)
-  void initWindowBuffer();
-#endif
-  
+  ssize_t recv(char *buffer, size_t bufferLen);  
 };
 
 }

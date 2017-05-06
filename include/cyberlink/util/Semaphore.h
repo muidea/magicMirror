@@ -10,9 +10,9 @@
 
 #ifndef _UHTTP_UTIL_SEMAPHORE_H_
 #define _UHTTP_UTIL_SEMAPHORE_H_
+#include <platform.h>
 
 #include <time.h>
-
 #if defined(__APPLE__)
 #include <mach/mach.h>
 #include <mach/semaphore.h>

@@ -18,10 +18,10 @@
 #include <net/SocketUtil.h>
 #include <util/StringUtil.h>
 
-#if (defined(WIN32) || defined(__CYGWIN__)) && !defined(ITRON)
+#if defined(WIN32)
   #include <Iptypes.h>
   #include <Iphlpapi.h>
-#elif !defined(BTRON) && !defined(TENGINE) && !defined(ITRON)
+#else
   #include <sys/socket.h>
   #include <net/if.h>
   #if defined(HAVE_IFADDRS_H) || defined(__APPLE_CC__)
@@ -36,20 +36,12 @@
 #include <sstream>
 
 using namespace std;
-using namespace CyberLink;
-using namespace CyberLink;
 
 bool CyberLink::HostInterface::USE_LOOPBACK_ADDR = false;
 bool CyberLink::HostInterface::USE_ONLY_IPV4_ADDR = false;
 bool CyberLink::HostInterface::USE_ONLY_IPV6_ADDR = false;
 
-#if defined(BTRON) || defined(TENGINE)
-const char *CyberLink::HostInterface::DEFAULT_IFNAME = "Neta";
-#endif
-
-#if defined(TENGINE) && defined(TENGINE_NET_KASAGO)
-extern ttUserInterface kaInterfaceHandle;
-#endif
+#pragma comment(lib, "IPHLPAPI.lib")
 
 ////////////////////////////////////////////////
 //  GetNHostAddresses
@@ -83,11 +75,11 @@ const char *CyberLink::GetHostAddress(size_t n, std::string &buf) {
 
 static bool IsUseAddress(const std::string &host) {
   if (CyberLink::HostInterface::USE_ONLY_IPV6_ADDR == true) {
-    if (IsIPv6Address(host) == false)
+    if (CyberLink::IsIPv6Address(host) == false)
       return false;
   }
   if (CyberLink::HostInterface::USE_ONLY_IPV4_ADDR == true) {
-    if (IsIPv6Address(host) == true)
+    if (CyberLink::IsIPv6Address(host) == true)
       return false;
   }
   return true;
@@ -97,46 +89,12 @@ static bool IsUseAddress(const std::string &host) {
 //  GetHostAddresses (WIN32)
 ////////////////////////////////////////////////
 
-#if (defined(WIN32) || defined(__CYGWIN__)) && !defined(ITRON)
-
-#if defined(__CYGWIN__) || defined(__MINGW32__)
-#define NOUSE_WIN32_GETHOSTADDRESSES 1
-#endif
+#if defined(_MSC_VER)
 
 size_t CyberLink::GetHostAddresses(NetworkInterfaceList &netIfList) {
   SocketStartup();
 
   netIfList.clear();
-
-#ifdef NOUSE_WIN32_GETHOSTADDRESSES
-
-  SOCKET sd = WSASocket(AF_INET, SOCK_DGRAM, 0, 0, 0, 0);
-  if (sd == SOCKET_ERROR)
-    return 0;
-
-  INTERFACE_INFO InterfaceList[20];
-  unsigned long nBytesReturned;
-  if (WSAIoctl(sd, SIO_GET_INTERFACE_LIST, 0, 0, &InterfaceList, sizeof(InterfaceList), &nBytesReturned, 0, 0) == SOCKET_ERROR)
-    return 0;
-
-  int nNumInterfaces = nBytesReturned / sizeof(INTERFACE_INFO);
-  for (int i = 0; i < nNumInterfaces; ++i) {
-    sockaddr_in *pAddress = (sockaddr_in *) & (InterfaceList[i].iiAddress);
-    char *host = inet_ntoa(pAddress->sin_addr);
-    u_long nFlags = InterfaceList[i].iiFlags;
-    if (CyberLink::HostInterface::USE_LOOPBACK_ADDR == false) {
-      if (nFlags & IFF_LOOPBACK)
-        continue;
-    }
-    if (!(nFlags & IFF_UP))
-      continue;
-    if (IsUseAddress(host) == false)
-      continue;
-    NetworkInterface *netIf = new NetworkInterface(host);
-    netIfList.add(netIf);
-  }
-
-#else
 
   IP_ADAPTER_ADDRESSES *pAdapterAddresses, *ai;
   DWORD ifFlags = 
@@ -199,8 +157,6 @@ size_t CyberLink::GetHostAddresses(NetworkInterfaceList &netIfList) {
   }
   LocalFree(pAdapterAddresses);
 
-#endif
-
   return netIfList.size();
 }
 
@@ -255,11 +211,11 @@ size_t CyberLink::GetHostAddresses(NetworkInterfaceList &netIfList) {
   return netIfList.size();
 }
 
-#elif !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
+#else
 
 static const char *PATH_PROC_NET_DEV = "/proc/net/dev";
 
-int CyberLink::GetHostAddresses(NetworkInterfaceList &netIfList) {
+size_t CyberLink::GetHostAddresses(NetworkInterfaceList &netIfList) {
   netIfList.clear();
   int s = socket(AF_INET, SOCK_DGRAM, 0);
   if (s < 0)
@@ -300,61 +256,6 @@ int CyberLink::GetHostAddresses(NetworkInterfaceList &netIfList) {
 }
 
 #endif
-
-#endif
-
-////////////////////////////////////////////////
-//  GetHostAddresses (BTRON)
-////////////////////////////////////////////////
-
-#if defined(BTRON) || (defined(TENGINE) && !defined(TENGINE_NET_KASAGO))
-
-int CyberLink::GetHostAddresses(NetworkInterfaceList &netIfList) {
-  netIfList.clear();
-  
-  struct hostent hostEnt;
-  B buf[HBUFLEN];
-  ERR err = so_gethostbyname("localhost", &hostEnt, buf);
-  if (err != 0)
-    return 0;
-  
-  const char *ifname = "Neta";
-  char ifaddr[32];
-  inet_ntop(hostEnt.h_addrtype, hostEnt.h_addr, ifaddr, sizeof(ifaddr));
-  
-  NetworkInterface *netIf = new NetworkInterface(ifaddr, ifname, 0);
-  netIfList.add(netIf);
-  
-  return netIfList.size();
-}
-
-#endif
-
-////////////////////////////////////////////////
-//  GetHostAddresses  (TENGINE-KASAGO)
-////////////////////////////////////////////////
-
-#if defined(TENGINE) && defined(TENGINE_NET_KASAGO)
-
-int CyberLink::GetHostAddresses(NetworkInterfaceList &netIfList) {
-  SocketStartup();
-
-  const char *ifname = "Neta";
-  char ifaddr[32];
-
-  struct in_addr inAddr;
-  inAddr.s_addr = 0;
-  int kaRet = ka_tfGetIpAddress(kaInterfaceHandle, &(inAddr.s_addr), 0);
-  if(kaRet != 0)
-    return 0;
-    
-  ka_tfInetToAscii((unsigned long)inAddr.s_addr, ifaddr);
-  
-  NetworkInterface *netIf = new NetworkInterface(ifaddr, ifname, 0);
-  netIfList.add(netIf);
-
-  return netIfList.size();
-}
 
 #endif
 

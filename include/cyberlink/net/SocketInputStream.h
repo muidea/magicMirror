@@ -21,12 +21,12 @@ const long SOCKET_RECV_RETRY_CNT = 10;
 const long SOCKET_INBUF_SIZE = 512*1024;
 
 class SocketInputStream : public CyberLink::InputStream {
-  Socket *sock;
+	cyber_shared_ptr<Socket> sock;
   std::string unputBuf;
   char *inBuf;
 
  public:
-  SocketInputStream(Socket *sock);
+  SocketInputStream(cyber_shared_ptr<Socket> sock);
 
   virtual ~SocketInputStream();
 

@@ -9,8 +9,11 @@
 ******************************************************************/
 
 #include <string.h>
+#if defined (WIN32)
+#else
 #include <unistd.h>
 #include <sys/msg.h>
+#endif
 
 #include <util/MessageQueue.h>
 

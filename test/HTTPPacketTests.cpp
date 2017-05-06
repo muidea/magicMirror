@@ -50,7 +50,7 @@ bool CyberLinkTest::TestHTTPPacket()
 	  std::cout << "getHeader failed. :" << __LINE__ << std::endl;
   }
 
-  if (httpPacket->getLongHeaderValue(TEST_HTTP_HEADER_NAME) != TEST_HTTP_HEADER_INT_VALUE) {
+  if (httpPacket->getLongHeaderValue(TEST_HTTP_HEADER_NAME) != TEST_HTTP_HEADER_LONG_VALUE) {
 	  std::cout << "getLongHeaderValue failed. :" << __LINE__ << std::endl;
   }
   delete httpPacket;

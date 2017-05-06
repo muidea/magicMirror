@@ -11,6 +11,7 @@
 #include <stdarg.h>
 
 #include <util/Log.h>
+#include <util/Logger.h>
 
 int CyberLink::Log(
 Logger *logger,
@@ -21,7 +22,7 @@ int lineNo,
 const char *functionName,
 #endif
 const char *format, ...) {
-  char outputMessage[CyberLink::Logger::MAX_LINE_STRING];
+  char* outputMessage = new char[CyberLink::Logger::MAX_LINE_STRING];
     
   va_list vaList;
   va_start(vaList, format);
@@ -39,5 +40,7 @@ const char *format, ...) {
        functionName);
 #endif
   
-  return logger->output(logType, outputMessage);
+  int retVal = logger->output(logType, outputMessage);
+  delete[]outputMessage;
+  return retVal;
 }

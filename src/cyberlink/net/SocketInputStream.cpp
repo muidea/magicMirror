@@ -19,7 +19,7 @@ using namespace CyberLink;
 //  Constructor
 ////////////////////////////////////////////////
 
-SocketInputStream::SocketInputStream(Socket *sock) {
+SocketInputStream::SocketInputStream(cyber_shared_ptr<Socket> sock) {
   this->sock = sock;
   this->inBuf = new char[SOCKET_INBUF_SIZE];
 }

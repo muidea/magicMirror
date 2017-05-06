@@ -38,7 +38,7 @@ void HTTPWorkerThread::run() {
     if (!httpServer->waitMessage(&httpMsg))
       break;
     
-    Socket *clientSock = httpMsg->getSocket();
+	cyber_shared_ptr<Socket> clientSock = httpMsg->getSocket();
     if (!clientSock) {
       delete httpMsg;
       continue;
@@ -47,20 +47,17 @@ void HTTPWorkerThread::run() {
     cyber_shared_ptr<HTTPSocket> httpSock = cyber_shared_ptr<HTTPSocket>(new HTTPSocket(clientSock));
     if (!httpSock) {
       delete httpMsg;
-      delete clientSock;
       continue;
     }
     
     if (httpSock->open() == false) {
       delete httpMsg;
-      delete clientSock;
       continue;
     }
     
     HTTPRequest *httpReq = new HTTPRequest();
     if (!httpReq) {
       delete httpMsg;
-      delete clientSock;
       continue;
     }
     httpReq->setSocket(httpSock);

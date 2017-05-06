@@ -29,7 +29,7 @@ class HTTPRequest : public HTTPPacket {
   int requestPort;
   
   cyber_shared_ptr<HTTPSocket> httpSocket;
-  Socket *postSocket;
+  cyber_shared_ptr<Socket> postSocket;
   
   HTTPResponse httpRes;
 

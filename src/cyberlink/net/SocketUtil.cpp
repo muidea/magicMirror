@@ -22,7 +22,7 @@ using namespace CyberLink;
 ////////////////////////////////////////////////
 
 int CyberLink::GetSocketLastErrorCode() {
-#if (defined(WIN32) || defined(__CYGWIN__)) && !defined(ITRON)
+#if defined(WIN32)
   return WSAGetLastError();
 #else
   return 0;
@@ -32,7 +32,7 @@ int CyberLink::GetSocketLastErrorCode() {
 const char *CyberLink::DecodeSocketError(int ErrorCode) {
   static char msg[1024];
 
-#if defined(WIN32) || defined(__CYGWIN__)
+#if defined(WIN32)
   FormatMessage(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS |
     FORMAT_MESSAGE_MAX_WIDTH_MASK,
     NULL, ErrorCode, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
@@ -46,37 +46,16 @@ const char *CyberLink::DecodeSocketError(int ErrorCode) {
 ////////////////////////////////////////////////
 //  toSocketAddrIn
 ////////////////////////////////////////////////
-
-#if !defined(ITRON)
-
 bool CyberLink::toSocketAddrIn(const std::string &addr, int port, struct sockaddr_in *sockaddr, bool isBindAddr) {
   SocketStartup();
 
   memset(sockaddr, 0, sizeof(sockaddr_in));
 
-#if defined(TENGINE) && defined(TENGINE_NET_KASAGO)
-  sockaddr->sin_family = AF_INET;
-  sockaddr->sin_addr.s_addr = ka_htonl(INADDR_ANY);
-  sockaddr->sin_port = ka_htons((unsigned short)port);
-#else
   sockaddr->sin_family = AF_INET;
   sockaddr->sin_addr.s_addr = htonl(INADDR_ANY);
   sockaddr->sin_port = htons((unsigned short)port);
-#endif
 
   if ((isBindAddr == true) || (0 < addr.length())) {
-#if defined(BTRON) || (defined(TENGINE) && !defined(TENGINE_NET_KASAGO))
-    sockaddr->sin_addr.s_addr = inet_addr(addr);
-    if (sockaddr->sin_addr.s_addr == -1 /*INADDR_NONE*/) {
-      struct hostent hent;
-      B hostBuf[HBUFLEN];
-      if (so_gethostbyname((B*)addr, &hent, hostBuf) != 0)
-        return false;
-      memcpy(&(sockaddr->sin_addr), hent.h_addr, hent.h_length);
-    }
-#elif defined(TENGINE) && defined(TENGINE_NET_KASAGO)
-    sockaddr->sin_addr.s_addr = ka_inet_addr((char *)addr);
-#else
     sockaddr->sin_addr.s_addr = inet_addr(addr.c_str());
     if (sockaddr->sin_addr.s_addr == INADDR_NONE) {
       struct hostent *hent = gethostbyname(addr.c_str());
@@ -84,19 +63,14 @@ bool CyberLink::toSocketAddrIn(const std::string &addr, int port, struct sockadd
         return false;
       memcpy(&(sockaddr->sin_addr), hent->h_addr, hent->h_length);
     }
-#endif
   }
 
   return true;
 }
 
-#endif
-
 ////////////////////////////////////////////////
 //  toSocketAddrInfo
 ////////////////////////////////////////////////
-
-#if !defined(BTRON) && !defined(ITRON) && !defined(TENGINE) 
 
 bool CyberLink::toSocketAddrInfo(int sockType, const std::string &addr, int port, struct addrinfo **addrInfo, bool isBindAddr) {
   SocketStartup();
@@ -126,5 +100,3 @@ bool CyberLink::toSocketAddrInfo(int sockType, const std::string &addr, int port
   
   return true;
 }
-
-#endif

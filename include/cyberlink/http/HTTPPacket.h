@@ -72,7 +72,7 @@ public:
   ////////////////////////////////////////////////
 
   bool set(CyberLink::InputStream *in, bool onlyHeaders = false);
-  bool set(CyberLink::Socket *sock, bool onlyHeaders = false);
+  bool set(cyber_shared_ptr<Socket> sock, bool onlyHeaders = false);
   bool set(HTTPSocket *httpSock);
   void set(HTTPPacket *httpPacket);
 

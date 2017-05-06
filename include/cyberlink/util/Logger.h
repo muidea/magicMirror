@@ -70,11 +70,7 @@ class Logger {
   }
 
   int debug(const char *outputMessage) {
-#if defined(DEBUG)
     return output(LoggerTarget::DBG, outputMessage);
-#else
-    return 0;
-#endif
   }
   
 private:

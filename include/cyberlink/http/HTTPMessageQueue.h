@@ -12,7 +12,7 @@
 #define _UHTTP_HTTPMESSAGEQUEUE_H_
 
 #include <queue>
-
+#include <platform.h>
 #include <util/MessageQueue.h>
 
 namespace CyberLink {
@@ -23,17 +23,21 @@ class HTTPMessage : public Message {
   
 public:
   
-  HTTPMessage(Socket *socket) {
+  HTTPMessage(cyber_shared_ptr<Socket> socket) {
     this->socket = socket;
   }
 
-  Socket *getSocket() {
+  ~HTTPMessage() {
+	  this->socket = NULL;
+  }
+
+  cyber_shared_ptr<Socket> getSocket() {
     return this->socket;
   }
   
 private:
-  
-  Socket *socket;
+
+	cyber_shared_ptr<Socket> socket;
 };
 
 class HTTPMessageQueue : private MessageQueue {

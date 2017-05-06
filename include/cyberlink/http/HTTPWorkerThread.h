@@ -16,12 +16,12 @@
 
 namespace CyberLink {
   
-class HTTPWorkerThread : public CyberLink::Thread {
-  CyberLink::HTTPServer *httpServer;
+class HTTPWorkerThread : public Thread {
+  HTTPServer *httpServer;
 
 public:
   
-  HTTPWorkerThread(CyberLink::HTTPServer *server);
+  HTTPWorkerThread(HTTPServer *server);
   ~HTTPWorkerThread();
 
   ////////////////////////////////////////////////

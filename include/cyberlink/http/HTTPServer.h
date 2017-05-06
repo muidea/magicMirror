@@ -22,7 +22,7 @@
 
 namespace CyberLink {
 
-class HTTPServer : public CyberLink::Thread {
+class HTTPServer : public Thread {
   
 public:
   
@@ -115,7 +115,7 @@ private:
   ThreadList workerThreadList;
   
   bool bind(int port, const std::string &addr = "");
-  bool accept(CyberLink::Socket *socket);
+  bool accept(Socket *socket);
   bool isOpened();
   
   CyberLink::ServerSocket *getServerSock() {

@@ -16,7 +16,7 @@
 #include <net/NetworkInterface.h>
 
 namespace CyberLink {
-  class NetworkInterfaceList : public ::CyberLink::SharedVector<NetworkInterface>  {
+  class NetworkInterfaceList : public SharedVector<NetworkInterface>  {
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////

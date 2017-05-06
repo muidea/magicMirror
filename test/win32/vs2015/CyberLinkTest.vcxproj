@@ -94,7 +94,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>../../../lib/</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>../../../lib/;../../../pthreads/lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>CyberLink.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

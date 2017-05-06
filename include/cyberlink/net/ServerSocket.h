@@ -14,7 +14,7 @@
 #include <net/Socket.h>
 
 namespace CyberLink {
-class ServerSocket : public ::CyberLink::Socket {
+class ServerSocket : public Socket {
  public:
   ServerSocket();
   ~ServerSocket();

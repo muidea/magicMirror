@@ -10,7 +10,7 @@
 
 #ifndef _UHTTP_LOG_H_
 #define _UHTTP_LOG_H_
-
+#include <platform.h>
 #include <util/Logger.h>
 #include <util/LoggerFileTarget.h>
 #include <util/LoggerStdTarget.h>

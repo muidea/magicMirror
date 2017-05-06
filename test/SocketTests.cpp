@@ -40,12 +40,12 @@ void CyberLinkTest::SocketConnectionHttpServerTest(void)
   const char *CG_HOST_IPADDR = "www.cybergarage.org";
   const char *TEST_HTTP_METHOD = "GET /index.html HTTP/1.0";
 
-  Socket *sock;
   ssize_t sentLen;
   ssize_t readLen;
   const char *line;
     
-  sock = new Socket();
+  cyber_shared_ptr<Socket> sock(new Socket());
+
   if (!sock->connect(CG_HOST_IPADDR, 80)) {
 	  std::cout << "sock->connect failed, :" << __LINE__ << std::endl;
   }
@@ -74,7 +74,6 @@ void CyberLinkTest::SocketConnectionHttpServerTest(void)
   } while (2 < readLen);
     
   sock->close();
-  delete sock;
 }
 
 

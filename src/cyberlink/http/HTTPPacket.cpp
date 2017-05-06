@@ -276,8 +276,8 @@ void HTTPPacket::set(HTTPPacket *httpPacket) {
   setContent(httpPacket->getContent());
 }
 
-bool HTTPPacket::set(CyberLink::Socket *sock, bool onlyHeaders) {
-  CyberLink::SocketInputStream sockIn(sock);
+bool HTTPPacket::set(cyber_shared_ptr<Socket> sock, bool onlyHeaders) {
+  SocketInputStream sockIn(sock);
   return set(&sockIn, onlyHeaders);
 }
 

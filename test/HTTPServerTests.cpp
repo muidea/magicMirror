@@ -14,6 +14,7 @@
 
 #include <HTTP.h>
 #include "HTTPServerTests.h"
+#include <util/Random.h>
 using namespace std;
 using namespace CyberLink;
 
@@ -107,14 +108,14 @@ bool CyberLinkTest::TestHTTPServer()
   HTTPSimpleRequestListener httpSimpleReqListener;
   httpServer.addRequestListener(&httpSimpleReqListener);
 
-  Random rand (1000, 10000);
+  Random rand ((unsigned int)1000, (unsigned int)10000);
   int httpPort = rand.rand();
   
   if (Socket::GetInstanceCount() != 0) {
 	  std::cout << "GetInstanceCount failed, :" << __LINE__ << std::endl;
   }
   
-  if (!httpServer.open(httpPort)) {
+  if (!httpServer.open(httpPort,"127.0.0.1")) {
 	  std::cout << "httpServer.open failed, :" << __LINE__ << std::endl;
   }
   if (!httpServer.start()) {
@@ -130,16 +131,20 @@ bool CyberLinkTest::TestHTTPServer()
   if (Socket::GetInstanceCount() != 0) {
 	  std::cout << "GetInstanceCount failed, :" << __LINE__ << std::endl;
   }
+
+  std::cout << "finish TestHTTPServer" << std::endl;
+
   return true;
 }
 
 bool CyberLinkTest::TestHTTPServerList()
 {
+	std::cout << "start TestHTTPServer" << std::endl;
 	if (Socket::GetInstanceCount() != 0) {
 		std::cout << "GetInstanceCount failed, :" << __LINE__ << std::endl;
    }
   
-  Random rand (1000, 10000);
+  Random rand ((unsigned int)1000, (unsigned int)10000);
   
   HTTPServerList httpServerList;
   httpServerList.open(rand.rand());

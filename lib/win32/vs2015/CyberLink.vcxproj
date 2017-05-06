@@ -114,6 +114,7 @@
     <ClCompile Include="..\..\..\src\cyberlink\http\HTTP.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\http\HTTPDate.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\http\HTTPHeader.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\http\HTTPMessageQueue.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\http\HTTPPacket.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\http\HTTPRequest.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\http\HTTPResponse.cpp" />
@@ -190,6 +191,16 @@
     <ClCompile Include="..\..\..\src\cyberlink\StateVariable.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\UPnP.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\UPnPStatus.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\Log.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\Logger.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\LoggerFileTarget.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\LoggerTarget.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\LoggerTargetList.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\Message.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\MessageQueue.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\Random.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\Semaphore.cpp" />
+    <ClCompile Include="..\..\..\src\cyberlink\util\ThreadList.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\xml\ActionData.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\xml\DeviceData.cpp" />
     <ClCompile Include="..\..\..\src\cyberlink\xml\expat\xmlparse.c" />
@@ -219,6 +230,7 @@
     <ClInclude Include="..\..\..\include\cyberlink\http\HTTP.h" />
     <ClInclude Include="..\..\..\include\cyberlink\http\HTTPDate.h" />
     <ClInclude Include="..\..\..\include\cyberlink\http\HTTPHeader.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPMessageQueue.h" />
     <ClInclude Include="..\..\..\include\cyberlink\http\HTTPPacket.h" />
     <ClInclude Include="..\..\..\include\cyberlink\http\HTTPRequest.h" />
     <ClInclude Include="..\..\..\include\cyberlink\http\HTTPRequestListener.h" />
@@ -228,6 +240,7 @@
     <ClInclude Include="..\..\..\include\cyberlink\http\HTTPServerThread.h" />
     <ClInclude Include="..\..\..\include\cyberlink\http\HTTPSocket.h" />
     <ClInclude Include="..\..\..\include\cyberlink\http\HTTPStatus.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\http\HTTPWorkerThread.h" />
     <ClInclude Include="..\..\..\include\cyberlink\http\Parameter.h" />
     <ClInclude Include="..\..\..\include\cyberlink\http\ParameterList.h" />
     <ClInclude Include="..\..\..\include\cyberlink\io\BufferedReader.h" />
@@ -240,6 +253,7 @@
     <ClInclude Include="..\..\..\include\cyberlink\io\Reader.h" />
     <ClInclude Include="..\..\..\include\cyberlink\io\StringBufferInputStream.h" />
     <ClInclude Include="..\..\..\include\cyberlink\io\StringReader.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\Log.h" />
     <ClInclude Include="..\..\..\include\cyberlink\net\DatagramPacket.h" />
     <ClInclude Include="..\..\..\include\cyberlink\net\DatagramSocket.h" />
     <ClInclude Include="..\..\..\include\cyberlink\net\HostInterface.h" />
@@ -325,6 +339,15 @@
     <ClInclude Include="..\..\..\include\cyberlink\StateVariable.h" />
     <ClInclude Include="..\..\..\include\cyberlink\UPnP.h" />
     <ClInclude Include="..\..\..\include\cyberlink\UPnPStatus.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Listener.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Log.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Logger.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\LoggerFileTarget.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\LoggerStdTarget.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\LoggerTarget.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\MessageQueue.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Random.h" />
+    <ClInclude Include="..\..\..\include\cyberlink\util\Semaphore.h" />
     <ClInclude Include="..\..\..\include\cyberlink\xml\ActionData.h" />
     <ClInclude Include="..\..\..\include\cyberlink\xml\ArgumentData.h" />
     <ClInclude Include="..\..\..\include\cyberlink\xml\DeviceData.h" />

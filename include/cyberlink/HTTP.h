@@ -33,4 +33,8 @@
 #include <http/HTTPServerList.h>
 #include <http/HTTPRequestListener.h>
 
+#ifdef WIN32
+#pragma comment(lib, "Ws2_32.lib")
+#endif
+
 #endif

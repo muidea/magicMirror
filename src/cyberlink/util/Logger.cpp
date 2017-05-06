@@ -9,6 +9,7 @@
 ******************************************************************/
 
 #include <util/Logger.h>
+#include <ctime>
 
 static CyberLink::Logger *gUHttpLoggerSharedInstance = NULL;
 

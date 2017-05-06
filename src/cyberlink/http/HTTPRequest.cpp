@@ -48,7 +48,6 @@ HTTPRequest::HTTPRequest(cyber_shared_ptr<HTTPSocket> httpSock) : HTTPPacket(htt
 
 HTTPRequest::~HTTPRequest() {
   if (postSocket) {
-    delete postSocket;
     postSocket = NULL;
   }
 }
@@ -245,7 +244,7 @@ HTTP::StatusCode HTTPRequest::post(HTTPResponse *httpRes, bool isOnlyHeader) {
 
 HTTPResponse *HTTPRequest::post(const std::string &host, int port, HTTPResponse *httpRes, bool isKeepAlive) {
   if (!postSocket) {
-    postSocket = new Socket();
+    postSocket.reset(new Socket());
     bool isConnected = postSocket->connect(host, port);
     bool isTimeoutSet = false;
     if (isConnected) {
@@ -253,7 +252,6 @@ HTTPResponse *HTTPRequest::post(const std::string &host, int port, HTTPResponse 
     }
     if (!isConnected || !isTimeoutSet) {
       int socketErrno = postSocket->getErrorCode();
-      delete postSocket;
       postSocket = NULL;
       httpRes->setStatusCode((HTTP::INTERNAL_CLIENT_ERROR + socketErrno));
       return httpRes;
@@ -295,7 +293,6 @@ HTTPResponse *HTTPRequest::post(const std::string &host, int port, HTTPResponse 
 
   if (isKeepAlive == false) {
     postSocket->close();
-    delete postSocket;
     postSocket = NULL;
   }
 

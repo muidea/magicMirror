@@ -18,14 +18,14 @@ namespace CyberLink {
 class HTTPResponse;
 
 class HTTPSocket {
-  CyberLink::Socket *socket;
+	cyber_shared_ptr<Socket> socket;
   
  public:
   ////////////////////////////////////////////////
   //  Constructor
   ////////////////////////////////////////////////
   
-  HTTPSocket(CyberLink::Socket *socket);
+  HTTPSocket(cyber_shared_ptr<Socket> socket);
   HTTPSocket(HTTPSocket *socket);
   ~HTTPSocket();
   
@@ -33,11 +33,11 @@ class HTTPSocket {
   //  Socket
   ////////////////////////////////////////////////
 
-  void setSocket(CyberLink::Socket *socket) {
+  void setSocket(cyber_shared_ptr<Socket> socket) {
     this->socket = socket;
   }
 
-  CyberLink::Socket *getSocket() {
+  cyber_shared_ptr<Socket> getSocket() {
     return socket;
   }
 

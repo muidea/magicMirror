@@ -25,6 +25,7 @@ typedef int ssize_t;
 #ifndef HAVE_STRUCT_TIMESPEC
 #define HAVE_STRUCT_TIMESPEC
 #endif
+#pragma comment(lib, "pthreadVC2.lib")
 #endif // WIN32
 
 
