@@ -11,20 +11,9 @@
 #ifndef _UHTTP_THREAD_H_
 #define _UHTTP_THREAD_H_
 
-#if defined(WIN32) && !defined(ITRON)
+#if defined(WIN32)
 #include <WinSock2.h>
 #include <windows.h>
-#elif defined(BTRON)
-#include <btron/proctask.h>
-#elif defined(ITRON)
-#if defined(WIN32) && defined(ITRON) && defined (_AFXDLL)
-#include <afxwin.h>
-#endif
-#include <kernel.h>
-#elif defined(TENGINE) && !defined(PROCESS_BASE)
-#include <tk/tkernel.h>
-#elif defined(TENGINE) && defined(PROCESS_BASE)
-#include <btron/proctask.h>
 #else
 #include <pthread.h>
 #include <signal.h>
@@ -65,23 +54,15 @@ private:
   
 private:
 
-#if defined(WIN32) && !defined(ITRON)
+#if defined(WIN32)
   HANDLE  hThread;
   DWORD  threadID;
-#elif defined(BTRON)
-  W taskID;
-#elif defined(ITRON)
-  ER_ID  taskID;
-#elif defined(TENGINE) && !defined(PROCESS_BASE)
-  ID taskID;
-#elif defined(TENGINE) && defined(PROCESS_BASE)
-  WERR taskID;
 #else
   pthread_t thread;
 #endif
   
   Mutex mutex;
-  bool runnableFlag;
+  volatile bool runnableFlag;
   void *runObject;
 };
 

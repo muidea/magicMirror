@@ -15,29 +15,15 @@
 
 #include <time.h>
 
-#if defined(WIN32) && defined(ITRON) && defined (_AFXDLL)
-#include <afxwin.h>
-#endif
-
-#if (defined(WIN32) || defined(__CYGWIN__)) && !defined(ITRON)
+#if defined(WIN32)
 #include <winsock2.h>
 #include <ws2tcpip.h>
-#elif defined(BTRON) || defined(TENGINE) 
-#include <typedef.h>
-#elif defined(ITRON)
-#include <kernel.h>
 #endif
 
 #include <string>
 
-#if (!defined(WIN32) && !defined(__CYGWIN__)) || defined(ITRON)
-#if defined(BTRON) || defined(TENGINE) 
-typedef W SOCKET;
-#elif defined(ITRON)
-typedef ER SOCKET;
-#else
+#if !defined(WIN32)
 typedef int SOCKET;
-#endif
 #endif
 
 #include <util/Vector.h>
@@ -154,10 +140,6 @@ protected:
  public:
   bool setReuseAddress(bool on);
   bool setTimeout(time_t timeout);
-
-  #if defined(TENGINE) && defined(TENGINE_NET_KASAGO)
-  bool setMulticastInterface(const std::string &ifaddr);
-  #endif
 
 private:
 
