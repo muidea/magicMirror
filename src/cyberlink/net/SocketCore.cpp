@@ -58,7 +58,7 @@ static int clearUpCount = 0;
 void CyberLink::SocketStartup() {
 	if (SocketCore::GetInstanceCount() == 0) {
 		if (startUpCount != clearUpCount) {
-			std::cout << "Thread:" << _threadid << ", invalid startup......" << std::endl;
+			//std::cout << "Thread:" << _threadid << ", invalid startup......" << std::endl;
 		}
 		startUpCount++;
 
@@ -105,16 +105,12 @@ SocketCore::SocketCore() {
 	setSocket(-1);
 #endif
 
-	std::cout << "Thread:" << _threadid << ", SocketCore:0x" << std::hex << this << std::endl;
-
 	gSocketListMutex.lock();
 	gAllSocketList.add(this);
 	gSocketListMutex.unlock();
 }
 
 SocketCore::~SocketCore() {
-	std::cout << "Thread:" << _threadid << ", ~SocketCore:0x" << std::hex << this << std::endl;
-
 	SocketCleanup();
 	gSocketListMutex.lock();
 	gAllSocketList.remove(this);

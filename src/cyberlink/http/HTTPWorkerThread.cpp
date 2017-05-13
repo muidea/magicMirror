@@ -35,8 +35,8 @@ void HTTPWorkerThread::run() {
   
   while (isRunnable()) {
     HTTPMessage *httpMsg;
-    if (!httpServer->waitMessage(&httpMsg))
-      break;
+    if (!httpServer->waitMessage(&httpMsg, 1))
+      continue;
     
 	cyber_shared_ptr<Socket> clientSock = httpMsg->getSocket();
     if (!clientSock) {

@@ -18,7 +18,7 @@
 #include <util/MessageQueue.h>
 
 CyberLink::MessageQueue::MessageQueue() {
-  this->sem = new Semaphore(0);
+  this->sem = new Semaphore(10);
   this->mutex = new Mutex();
 }
 

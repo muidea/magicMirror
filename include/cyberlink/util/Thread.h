@@ -21,6 +21,7 @@
 
 #include <util/Vector.h>
 #include <util/Mutex.h>
+#include <util/Semaphore.h>
 
 namespace CyberLink {
   
@@ -44,12 +45,18 @@ public:
   
   bool restart() {
     stop();
+	this->runningSemaphore.reset();
     start();
     return true;
   }
 
-private:
-  
+  void invokeRun() {
+	  this->runningSemaphore.post();
+
+	  this->run();
+  }
+
+private:  
   void setRunnableFlag(bool flag);
   
 private:
@@ -60,7 +67,8 @@ private:
 #else
   pthread_t thread;
 #endif
-  
+  Semaphore runningSemaphore;
+
   Mutex mutex;
   volatile bool runnableFlag;
   void *runObject;

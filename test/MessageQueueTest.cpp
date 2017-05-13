@@ -121,7 +121,7 @@ bool CyberLinkTest::TestMessageCancelThread() {
   msgCancelThread.start();
   
   Message *msg = NULL;
-  if (msgQueue.waitMessage(&msg) != false) {
+  if (msgQueue.waitMessage(&msg, 1) != false) {
 	  std::cout << "msgQueue.waitMessage failed, :" << __LINE__ << std::endl;
   }
 

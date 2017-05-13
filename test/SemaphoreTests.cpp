@@ -17,7 +17,7 @@ using namespace std;
 using namespace CyberLink;
 
 bool CyberLinkTest::TestBasicSemaphore() {
-  Semaphore *sem = new Semaphore(1);
+  Semaphore *sem = new Semaphore(2);
 
   if (!sem->post()) {
 	  std::cout << "sem->post() failed, :" << __LINE__ << std::endl;
@@ -32,6 +32,10 @@ bool CyberLinkTest::TestBasicSemaphore() {
   if (!sem->post()) {
 	  std::cout << "sem->post() failed, :" << __LINE__ << std::endl;
   }
+  if (sem->post()) {
+	  std::cout << "sem->post() failed, :" << __LINE__ << std::endl;
+  }
+
   if (!sem->wait()) {
 	  std::cout << "sem->wait() failed, :" << __LINE__ << std::endl;
   }
@@ -60,7 +64,7 @@ bool CyberLinkTest::TestBasicSemaphore() {
 bool CyberLinkTest::TestWaitSemaphore() {
   const time_t TEST_WAIT_TIME = 1;
   
-  Semaphore *sem = new Semaphore(0);
+  Semaphore *sem = new Semaphore(3);
   
   if (sem->wait(TEST_WAIT_TIME)) {
 	  std::cout << "sem->wait() failed, :" << __LINE__ << std::endl;
@@ -135,7 +139,7 @@ class SemaphorePostThread : public Thread {
 };
 
 bool CyberLinkTest::TestPostThreadSemaphore() {
-  Semaphore *sem = new Semaphore(1);
+  Semaphore *sem = new Semaphore(10);
   
   SemaphorePostThread semThread;
   semThread.setObject(sem);
@@ -152,7 +156,7 @@ bool CyberLinkTest::TestPostThreadSemaphore() {
 }
 
 void CyberLinkTest::TestCancelSemaphore() {
-  Semaphore *sem = new Semaphore(0);
+  Semaphore *sem = new Semaphore(10);
   
   if (!sem->post()) {
 	  std::cout << "sem->post() failed, :" << __LINE__ << std::endl;
@@ -187,27 +191,25 @@ public:
 };
 
 void CyberLinkTest::TestCancelThreadSemaphore() {
-  Semaphore *sem = new Semaphore(0);
+  Semaphore sem(10);
   
   SemaphoreCancelThread semThread;
-  semThread.setObject(sem);
+  semThread.setObject(&sem);
   semThread.start();
   
-  if (!sem->post()) {
+  if (!sem.post()) {
 	  std::cout << "sem->post() failed, :" << __LINE__ << std::endl;
   }
-  if (!sem->wait()) {
+  if (!sem.wait()) {
 	  std::cout << "sem->wait() failed, :" << __LINE__ << std::endl;
   }
-  if (sem->wait()) {
+  if (sem.wait(1)) {
 	  std::cout << "sem->wait() failed, :" << __LINE__ << std::endl;
   }
-  if (sem->post()) {
+  if (sem.post()) {
 	  std::cout << "sem->post() failed, :" << __LINE__ << std::endl;
   }
-  if (sem->wait()) {
+  if (sem.wait()) {
 	  std::cout << "sem->wait() failed, :" << __LINE__ << std::endl;
   }
-  
-  delete sem;
 }

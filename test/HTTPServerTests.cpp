@@ -22,7 +22,7 @@ using namespace CyberLink;
 // Simple Request Listener
 //////////////////////////////////////////////////////////////////////
 
-#define UHTTP_HTTP_SERVER_TEST_LOOP_COUNT 3
+#define UHTTP_HTTP_SERVER_TEST_LOOP_COUNT 100
 #define UHTTP_HTTP_SERVER_TEST_CONTENT "123456789abcedfghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 #define UHTTP_HTTP_SERVER_TEST_PARAM_NAME "param"
 

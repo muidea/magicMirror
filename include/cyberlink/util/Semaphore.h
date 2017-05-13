@@ -13,7 +13,10 @@
 #include <platform.h>
 
 #include <time.h>
-#if defined(__APPLE__)
+#if defined(WIN32)
+#include <WinSock2.h>
+#include <windows.h>
+#elif defined(__APPLE__)
 #include <mach/mach.h>
 #include <mach/semaphore.h>
 #else
@@ -22,8 +25,9 @@
 #endif
 
 namespace CyberLink {
-
-#if defined(__APPLE__)
+#if defined(WIN32)
+typedef HANDLE SemaphoreId;
+#elif defined(__APPLE__)
 typedef semaphore_t SemaphoreId;
 #else
 typedef sem_t SemaphoreId;
@@ -35,6 +39,7 @@ class Semaphore {
   ~Semaphore();
 
   bool post();
+  // timeoutSec=0 表示无限等待
   bool wait(time_t timeoutSec = 0);
 
   bool reset();

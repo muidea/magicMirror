@@ -17,10 +17,10 @@
 #include "LoggerTests.h"
 #include "MessageQueueTest.h"
 #include "MutexTests.h"
+#include "SemaphoreTests.h"
 #include <iostream>
 int main(int argc, char* argv[])
 {
-	/*
 	std::cout << "DateTests.................." << std::endl;
 	CyberLinkTest::TestDate();
 	std::cout << "HTTPClientTests.................." << std::endl;
@@ -30,11 +30,16 @@ int main(int argc, char* argv[])
 	std::cout << "HTTPRequestTests.................." << std::endl;
 	CyberLinkTest::TestHTTPRequest();
 	CyberLinkTest::TestHTTPRequestConnection();
-	*/
+	std::cout << "SemaphoreTests.................." << std::endl;
+	CyberLinkTest::TestBasicSemaphore();
+	CyberLinkTest::TestWaitSemaphore();
+	CyberLinkTest::TestPostThreadSemaphore();
+	CyberLinkTest::TestCancelSemaphore();
+	CyberLinkTest::TestCancelThreadSemaphore();
+
 	std::cout << "HTTPServerTests.................." << std::endl;
 	CyberLinkTest::TestHTTPServer();
 	CyberLinkTest::TestHTTPServerList();
-	/*
 	std::cout << "HTTPStatusTests.................." << std::endl;
 	CyberLinkTest::TestHTTPStatus();
 	std::cout << "LoggerTests.................." << std::endl;
@@ -47,6 +52,5 @@ int main(int argc, char* argv[])
 	CyberLinkTest::TestMessageCancelThread();
 	std::cout << "MutexTests.................." << std::endl;
 	CyberLinkTest::TestMutex();
-	*/
 	return 0;
 }
